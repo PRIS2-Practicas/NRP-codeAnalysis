@@ -10,10 +10,14 @@ from algoritmo import algoritmo_greedy
 
 class TestAlgoritmoGreedy(unittest.TestCase):
 
+    STAKEHOLDER_1 = "Stakeholder 1"
+    REQUISITO_1 = "Requisito 1"
+    REQUISITO_2 = "Requisito 2"
+
     def test_solucion_exclusiones(self):
-        stakeholder1 = Stakeholder("Stakeholder 1")
-        requisito1 = Requisito("Requisito 1")
-        requisito2 = Requisito("Requisito 2")
+        stakeholder1 = Stakeholder(self.STAKEHOLDER_1)
+        requisito1 = Requisito(self.REQUISITO_1)
+        requisito2 = Requisito(self.REQUISITO_2)
         requisito3 = Requisito("Requisito 3")
 
         requisito1.agregar_stakeholder(stakeholder1)
@@ -35,9 +39,9 @@ class TestAlgoritmoGreedy(unittest.TestCase):
         self.assertLessEqual(coste_acumulado, limite_coste)
 
     def test_solucion_implicaciones(self):
-        stakeholder1 = Stakeholder("Stakeholder 1")
-        requisito1 = Requisito("Requisito 1")
-        requisito2 = Requisito("Requisito 2")
+        stakeholder1 = Stakeholder(self.STAKEHOLDER_1)
+        requisito1 = Requisito(self.REQUISITO_1)
+        requisito2 = Requisito(self.REQUISITO_2)
         requisito3 = Requisito("Requisito 3")
         requisito4 = Requisito("Requisito 4")
 
@@ -59,14 +63,14 @@ class TestAlgoritmoGreedy(unittest.TestCase):
 
     def test_solucion_combinaciones(self):
         
-        stakeholder1 = Stakeholder("Stakeholder 1")
+        stakeholder1 = Stakeholder(self.STAKEHOLDER_1)
         stakeholder2 = Stakeholder("Stakeholder 2")
         stakeholder3 = Stakeholder("Stakeholder 3")
         stakeholder4 = Stakeholder("Stakeholder 4")
         stakeholder5 = Stakeholder("Stakeholder 5")
 
-        requisito1 = Requisito("Requisito 1")
-        requisito2 = Requisito("Requisito 2")
+        requisito1 = Requisito(self.REQUISITO_1)
+        requisito2 = Requisito(self.REQUISITO_2)
         requisito3 = Requisito("Requisito 3")
         requisito4 = Requisito("Requisito 4")
         requisito5 = Requisito("Requisito 5")
@@ -94,9 +98,9 @@ class TestAlgoritmoGreedy(unittest.TestCase):
         self.assertIn(requisito5, solucion)
 
     def test_solucion_sin_espacio(self):
-        stakeholder1 = Stakeholder("Stakeholder 1")
-        requisito1 = Requisito("Requisito 1")
-        requisito2 = Requisito("Requisito 2")
+        stakeholder1 = Stakeholder(self.STAKEHOLDER_1)
+        requisito1 = Requisito(self.REQUISITO_1)
+        requisito2 = Requisito(self.REQUISITO_2)
         requisito3 = Requisito("Requisito 3")
 
         requisito1.agregar_stakeholder(stakeholder1)

@@ -9,10 +9,14 @@ from algoritmo import algoritmo_greedy
 
 class TestAlgoritmoGreedy(unittest.TestCase):
 
+    STAKEHOLDER_1 = "Stakeholder 1"
+    REQUISITO_1 = "Requisito 1"
+    REQUISITO_2 = "Requisito 2"
+
     def test_greedy_exclusion(self):
-        stakeholder1 = Stakeholder("Stakeholder 1")
-        requisito1 = Requisito("Requisito 1")
-        requisito2 = Requisito("Requisito 2")
+        stakeholder1 = Stakeholder(self.STAKEHOLDER_1)
+        requisito1 = Requisito(self.REQUISITO_1)
+        requisito2 = Requisito(self.REQUISITO_2)
 
         requisito1.agregar_stakeholder(stakeholder1)
         requisito2.agregar_stakeholder(stakeholder1)
@@ -25,9 +29,9 @@ class TestAlgoritmoGreedy(unittest.TestCase):
         self.assertNotIn(requisito2, solucion)
 
     def test_greedy_combinacion(self):
-        stakeholder1 = Stakeholder("Stakeholder 1")
-        requisito1 = Requisito("Requisito 1")
-        requisito2 = Requisito("Requisito 2")
+        stakeholder1 = Stakeholder(self.STAKEHOLDER_1)
+        requisito1 = Requisito(self.REQUISITO_1)
+        requisito2 = Requisito(self.REQUISITO_2)
 
         requisito1.agregar_stakeholder(stakeholder1)
         requisito2.agregar_stakeholder(stakeholder1)
@@ -40,9 +44,9 @@ class TestAlgoritmoGreedy(unittest.TestCase):
         self.assertIn(requisito2, solucion)
 
     def test_greedy_implicacion(self):
-        stakeholder1 = Stakeholder("Stakeholder 1")
-        requisito1 = Requisito("Requisito 1")
-        requisito2 = Requisito("Requisito 2")
+        stakeholder1 = Stakeholder(self.STAKEHOLDER_1)
+        requisito1 = Requisito(self.REQUISITO_1)
+        requisito2 = Requisito(self.REQUISITO_2)
         requisito3 = Requisito("Requisito 3")
         requisito4 = Requisito("Requisito 4")
 
@@ -63,14 +67,14 @@ class TestAlgoritmoGreedy(unittest.TestCase):
         self.assertIn(requisito4, solucion)
 
     def test_greedy_varias_relaciones(self):
-        stakeholder1 = Stakeholder("Stakeholder 1")
+        stakeholder1 = Stakeholder(self.STAKEHOLDER_1)
         stakeholder2 = Stakeholder("Stakeholder 2")
         stakeholder3 = Stakeholder("Stakeholder 3")
         stakeholder4 = Stakeholder("Stakeholder 4")
         stakeholder5 = Stakeholder("Stakeholder 5")
 
-        requisito1 = Requisito("Requisito 1")
-        requisito2 = Requisito("Requisito 2")
+        requisito1 = Requisito(self.REQUISITO_1)
+        requisito2 = Requisito(self.REQUISITO_2)
         requisito3 = Requisito("Requisito 3")
         requisito4 = Requisito("Requisito 4")
         requisito5 = Requisito("Requisito 5")
