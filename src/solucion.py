@@ -33,11 +33,14 @@ def main():
     requisito5.agregar_stakeholder(stakeholder5)
     requisito5.agregar_stakeholder(stakeholder4)
     requisito2.agregar_stakeholder(stakeholder2)
+    requisito4.agregar_stakeholder(stakeholder3)
+    requisito4.agregar_stakeholder(stakeholder1)
+
 
     requisito1.agregar_exclusion(requisito2)
     requisito3.agregar_combinacion(requisito5)
-    requisito4.agregar_exclusion(requisito5)
-    requisito5.agregar_implicacion(requisito4)
+    requisito4.agregar_implicacion(requisito2)
+    
     
 
     # Definir límite de coste
