@@ -6,6 +6,8 @@ def algoritmo_greedy(requisitos, limite_coste):
     for requisito in requisitos_ordenados:
         if not requisito.es_factible(solucion):
             continue
+        if not all(implicacion in solucion for implicacion in requisito.implicaciones):
+            continue
         coste_combinado = sum([r.calcular_coste() for r in requisito.combinaciones]) + requisito.calcular_coste()
         if coste_acumulado + coste_combinado <= limite_coste and requisito.es_factible(solucion):
             solucion.append(requisito)
