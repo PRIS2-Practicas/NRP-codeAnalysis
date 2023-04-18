@@ -38,6 +38,8 @@ class Requisito:
                 return False
             if self in requisito.implicaciones:
                 return False
+            if requisito in self.implicaciones:
+                return False
             if self in requisito.combinaciones and requisito not in self.combinaciones:
                 return False
         return True
