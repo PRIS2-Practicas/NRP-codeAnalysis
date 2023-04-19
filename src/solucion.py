@@ -3,6 +3,7 @@ from stakeholder import Stakeholder
 from algoritmo import algoritmo_greedy
 
 def main():
+
     # Crear stakeholders
     stakeholder1 = Stakeholder("Stakeholder 1")
     stakeholder2 = Stakeholder("Stakeholder 2")
