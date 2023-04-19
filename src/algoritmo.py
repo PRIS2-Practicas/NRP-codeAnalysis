@@ -14,7 +14,7 @@ def algoritmo_greedy(requisitos, limite_coste):
         # Si las implicaciones no se cumplen, pasar al siguiente requisito
         if not implicaciones_cumplidas:
             continue
-
+        
         coste_combinado = sum([r.calcular_coste() for r in requisito.combinaciones]) + requisito.calcular_coste()
         if coste_acumulado + coste_combinado <= limite_coste:
             solucion.append(requisito)
