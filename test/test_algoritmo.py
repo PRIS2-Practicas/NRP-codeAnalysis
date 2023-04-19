@@ -13,12 +13,13 @@ class TestAlgoritmoGreedy(unittest.TestCase):
     STAKEHOLDER_1 = "Stakeholder 1"
     REQUISITO_1 = "Requisito 1"
     REQUISITO_2 = "Requisito 2"
+    REQUISITO_3 = "Requisito 3"
 
     def test_solucion_exclusiones(self):
         stakeholder1 = Stakeholder(self.STAKEHOLDER_1)
         requisito1 = Requisito(self.REQUISITO_1)
         requisito2 = Requisito(self.REQUISITO_2)
-        requisito3 = Requisito("Requisito 3")
+        requisito3 = Requisito(self.REQUISITO_3)
 
         requisito1.agregar_stakeholder(stakeholder1)
         requisito2.agregar_stakeholder(stakeholder1)
@@ -42,7 +43,7 @@ class TestAlgoritmoGreedy(unittest.TestCase):
         stakeholder1 = Stakeholder(self.STAKEHOLDER_1)
         requisito1 = Requisito(self.REQUISITO_1)
         requisito2 = Requisito(self.REQUISITO_2)
-        requisito3 = Requisito("Requisito 3")
+        requisito3 = Requisito(self.REQUISITO_3)
         requisito4 = Requisito("Requisito 4")
 
         requisito1.agregar_stakeholder(stakeholder1)
@@ -71,7 +72,7 @@ class TestAlgoritmoGreedy(unittest.TestCase):
 
         requisito1 = Requisito(self.REQUISITO_1)
         requisito2 = Requisito(self.REQUISITO_2)
-        requisito3 = Requisito("Requisito 3")
+        requisito3 = Requisito(self.REQUISITO_3)
         requisito4 = Requisito("Requisito 4")
         requisito5 = Requisito("Requisito 5")
 
@@ -101,7 +102,7 @@ class TestAlgoritmoGreedy(unittest.TestCase):
         stakeholder1 = Stakeholder(self.STAKEHOLDER_1)
         requisito1 = Requisito(self.REQUISITO_1)
         requisito2 = Requisito(self.REQUISITO_2)
-        requisito3 = Requisito("Requisito 3")
+        requisito3 = Requisito(self.REQUISITO_3)
 
         requisito1.agregar_stakeholder(stakeholder1)
         requisito2.agregar_stakeholder(stakeholder1)
@@ -111,6 +112,47 @@ class TestAlgoritmoGreedy(unittest.TestCase):
         solucion = algoritmo_greedy([requisito1, requisito2, requisito3], limite_coste)
 
         self.assertEqual(len(solucion), 0)
+
+    def test_greedy_sin_combinaciones_coste_acumulado(self):
+        stakeholder1 = Stakeholder(self.STAKEHOLDER_1)
+        requisito1 = Requisito(self.REQUISITO_1)
+        requisito2 = Requisito(self.REQUISITO_2)
+        requisito3 = Requisito(self.REQUISITO_3)
+
+        requisito1.agregar_stakeholder(stakeholder1)
+        requisito2.agregar_stakeholder(stakeholder1)
+        requisito3.agregar_stakeholder(stakeholder1)
+
+        requisito1.agregar_combinacion(requisito2)
+
+        limite_coste = 10
+        solucion = algoritmo_greedy([requisito1, requisito2, requisito3], limite_coste)
+
+        self.assertNotIn(requisito1, solucion)
+        self.assertNotIn(requisito2, solucion)
+        self.assertIn(requisito3, solucion)    
+
+    def test_greedy_con_combinaciones(self):
+        stakeholder1 = Stakeholder(self.STAKEHOLDER_1)
+        requisito1 = Requisito("Requisito 1")
+        requisito2 = Requisito("Requisito 2")
+        requisito3 = Requisito("Requisito 3")
+
+        requisito1.agregar_stakeholder(stakeholder1)
+        requisito2.agregar_stakeholder(stakeholder1)
+        requisito3.agregar_stakeholder(stakeholder1)
+
+        requisito1.agregar_combinacion(requisito2)
+
+        limite_coste = 20
+        solucion = algoritmo_greedy([requisito1, requisito2, requisito3], limite_coste)
+
+        self.assertIn(requisito1, solucion)
+        self.assertIn(requisito2, solucion)
+        self.assertNotIn(requisito3, solucion)
+
+        coste_acumulado = sum([r.calcular_coste() for r in solucion])
+        self.assertEqual(coste_acumulado, requisito1.calcular_coste() + requisito2.calcular_coste())
 
 if __name__ == '__main__':
     unittest.main()
